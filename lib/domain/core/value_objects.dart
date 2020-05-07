@@ -3,11 +3,21 @@ import 'package:dartz/dartz.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 
 import 'failures.dart';
+import 'package:ddd/domain/core/errors.dart';
 
 @immutable
 abstract class ValueObject<T> {
   const ValueObject();
   Either<ValueFailure<T>, T> get value;
+
+  /// Throes [UnexpectedValueError] containing [ValueFailure]
+  T getOrCrach() {
+// id =identity - same as writing (right) => right)
+    return value.fold(
+      (left) => throw UnexpectedValueError(left),
+      id,
+    );
+  }
 
   bool isValid() => value.isRight();
 
