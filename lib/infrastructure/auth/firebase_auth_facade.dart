@@ -79,7 +79,7 @@ class FirebaseAuthFacade implements IAuthFacade {
 
       if (googleUser == null) {
         return left(
-          const AuthFailure.canceledByUser(),
+          const AuthFailure.cancelledByUser(),
         );
       }
 
