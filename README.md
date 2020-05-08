@@ -1,4 +1,4 @@
-# ddd
+# Flutter domain design development notes app
 
 A new Flutter project.
 
